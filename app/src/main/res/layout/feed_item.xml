@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <variable
+        name="feedItem"
+        type="com.elka.stepikandroid.FeedItem" />
+  </data>
+
+  <androidx.cardview.widget.CardView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:clickable="true"
+      android:focusable="true"
+      android:foreground="?android:attr/selectableItemBackground"
+      app:cardCornerRadius="0dp"
+      app:cardElevation="0dp">
+
+    <LinearLayout
+        android:paddingVertical="10dp"
+        android:paddingHorizontal="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+
+      <ImageView
+          app:imageUrl="@{feedItem.thumbnail}"
+          android:id="@+id/imageView"
+          android:layout_width="150dp"
+          android:layout_height="100dp"
+          android:scaleType="centerCrop"
+          tools:srcCompat="@tools:sample/avatars" />
+
+      <LinearLayout
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="10dp"
+          android:layout_weight="1"
+          android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_regular"
+            android:text="@{feedItem.title}"
+            android:textSize="14sp"
+            tools:text="Article title" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="@font/montserrat_regular"
+            android:maxLines="3"
+            android:text="@{feedItem.description}"
+            android:textSize="12sp"
+            tools:text="Description..." />
+      </LinearLayout>
+
+    </LinearLayout>
+
+  </androidx.cardview.widget.CardView>
+</layout>
