@@ -1,11 +1,14 @@
 package com.elka.stepikandroid
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.elka.stepikandroid.databinding.ActivityMainBinding
 import io.reactivex.disposables.Disposable
+
 
 class MainActivity : AppCompatActivity() {
   private lateinit var binding: ActivityMainBinding
@@ -14,6 +17,8 @@ class MainActivity : AppCompatActivity() {
   private val feedAdapterListener by lazy {
     object : FeedViewHolder.Companion.Listener {
       override fun onSelect(feedItem: FeedItem) {
+        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(feedItem.link))
+        startActivity(browserIntent)
       }
     }
   }
