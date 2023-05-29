@@ -23,15 +23,17 @@ class MainActivity : AppCompatActivity() {
     setContentView(binding.root)
 
     binding.text.setOnClickListener {
-
-
-      val o = createRequest(NEWS_URL).map { Gson().fromJson(it, Feed::class.java) }
-      request = o.subscribe({ result ->
-        for (item in result.items) {
-          Log.d("FEED_LOADS", item.toString())
-        }
-      }, { error -> Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show() })
+      getNews()
     }
+  }
+
+  fun getNews() {
+    val o = createRequest(NEWS_URL).map { Gson().fromJson(it, Feed::class.java) }
+    request = o.subscribe({ result ->
+      for (item in result.items) {
+        Log.d("FEED_LOADS", item.toString())
+      }
+    }, { error -> Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show() })
   }
 
   override fun onDestroy() {
